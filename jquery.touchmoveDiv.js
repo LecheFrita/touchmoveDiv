@@ -44,11 +44,11 @@ var initialPosition = {
 				var movimiento = initialPosition.left + ((moveTouchX - initialTouch.touchX) * settings.velocity);
 				if (movimiento > 0){ 
 					movimiento = 0;
-				}else if ($(this).width() < $(settings.selectorMove).width() - movimiento) {
-					movimiento = $(window).width() - $(settings.selectorMove).width();
+				}else if ($(this).width() >= $(settings.selectorMove).width() + movimiento) {
+					movimiento = -($(settings.selectorMove).width() - $(this).width());
 				}
 				
-				if  ((movimiento <= 0) && ($(this).width() >= $(settings.selectorMove).width() - movimiento)){
+				if  ((movimiento <= 0) && ($(this).width() <= $(settings.selectorMove).width() + movimiento)){
 					$(settings.selectorMove).css("left",movimiento);	
 				}
 			}
